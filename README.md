@@ -121,10 +121,36 @@ Expo는 React Native 개발 환경을 간소화하고 접근성을 높여주는 
    ```bash
    npx create-expo-app {프로젝트명} --template blank
    ```
-- 실행 명령  
+
+### open web을 위한 디펜던시 설치 (react-dom, react-native-web, @expo/metro-runtime)
    ```bash
-   npx expo start --tunnel
+   npx expo install react-dom react-native-web @expo/metro-runtime
    ```
+
+### EAS Update
+ expo.dev 대시보드에 배포 기록이 쌓이고, 앱을 Expo Go나 웹에서 열 때 최신 상태로 로드
+
+- EAS CLI 설치 
+  ```bash
+   npm install -g eas-cli
+  ```
+- Expo 계정 로그인 
+  ```bash
+   eas login
+  ```
+- EAS 프로젝트 초기화 (최초 1회) 
+  ```bash
+   eas init
+  ```
+- OTA 업데이트 배포 
+  ```bash
+   eas update --branch main --message "Initial update"
+  ```
+
+### 프로젝트 기동 명령  
+```bash
+npx expo start --tunnel
+```
 </details>
 <br/>
 
