@@ -269,6 +269,87 @@ https://snack.expo.dev/에서 브라우저를 통해 바로 react 어플리케�
 </details>
 <br/>
 
+## React Native 규칙
+<details>
+<summary>펼치기 접기</summary>
+
+### 예시코드
+
+```js
+import { Text, SafeAreaView, StyleSheet } from 'react-native';
+
+// You can import supported modules from npm
+import { Card } from 'react-native-paper';
+
+// or any files within the Snack
+import AssetExample from './components/AssetExample';
+
+export default function App() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.paragraph}>
+        Change code in the editor and watch it change on your phone! Save to get a shareable url.
+      </Text>
+      <Card>
+        <AssetExample />
+      </Card>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
+```
+### View
+React Native는 웹 사이트가 아니다.  
+HTML이 아니기 때문에 div는 사용할 수 없다.  
+View 컴포넌트는 div 대신 container로 사용되는 태그이다.
+따라서 컴포넌트 내에 항상 View 컴포넌트를 import 해야 한다.  
+
+### Text
+React Native에 있는 모든 text(노드)는 Text 컴포넌트에 들어가야 한다.  
+역시 브라우저가 아니기 때문에 span이나 Paragraph인 p를 사용할 수 없다.  
+예를들어 View 컴포넌트 태그 사이에 text(노드)를 넣는다면 오류가 발생하게 된다.  
+
+text(노드)는 Text 컴포넌트 안에서 렌더링이 되어야 한다.  
+
+### style 속성과 STyleSheet.create()
+
+#### style 속성
+React.js에서 div에 부여하는 style 속성과 매우 비슷하다.
+차이점이라면 일부 style을 사용할 수 없다.  
+예를들어 `border: "1px green dashed`와 같이 효과를 주게 되면, React Native에서 border가 유효한 style property가 아니라는 점이다.  
+따라서 웹에서 사용하던 모든것을 사용할 수는 없다.  
+React native 팀이 많은 노력을 기울여 거의 모든것을 가져오려고 했다.  
+(backgroundColor, alignItems, flex:1, justifyContent 등등..)  
+그러나 웹에서 가져올 수 없는 property가 있다.  
+
+#### StyleSheet.create()
+style Object를 생성하는데 사용한다.  
+style 관련 자동완성 기능을 제공해준다.  
+스타일 컴포넌트를 정리하는데 유용하다.  
+반드시 필요한것은 아니다.  
+React.JS에서 사용하던대로, 컴포넌트의 style속성에 `<Text style={{fontSize: 48}}>Hello<Text>` 형태로도 사용이 가능하다.  
+`{fontSize: 48}` 객체를 변수로 선언하여 바인딩 또한 가능하다.  
+
+create 내부에 선언한 Object의 property key는 (ex: container) 특정한 네이밍 패턴을 따를 필요는 없다.  
+마치 class 이름을 부여하는것처럼 제약이 없다. (class명을 부여하는것은 아님.)
+
+</details>
+<br/>
+
 ## 
 <details>
 <summary>펼치기 접기</summary>
