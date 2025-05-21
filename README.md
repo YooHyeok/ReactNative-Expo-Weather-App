@@ -250,6 +250,25 @@ Native와 Javascript간에 사용자로부터 발생한 이벤트에 대한 메�
 </details>
 <br/>
 
+## [Snack](https://snack.expo.dev/)
+<details>
+<summary>펼치기 접기</summary>
+
+브라우저에서 React 어플리케이션을 만들 수 있게 해주는 온라인 코드 에디터이다.  
+예를 들어, visual Studio Code 또는 Node.js를 다운로드할 수 없거나 iPad로 코딩을 하고 있는 경우  
+https://snack.expo.dev/에서 브라우저를 통해 바로 react 어플리케이션을 만들 수 있다.  
+  
+  ![alt text](image.png)
+스마트폰에 expo 애플리케이션이 있다면 화면 우측에 보이는 My Device 탭의 QR 코드를 스캔할 경우 애플리케이션이 열린다.  
+해당 방법을 통해 브라우저에서 코드를 편집하고 변경이 가능하다.  
+또한 스마트폰에서 해당 코드를 미리보기 할 수 있다.  
+사진에서 보는것과 같이 My Device 탭 우측으로 iOS, Android 및 웹 버튼이 있다.  
+해당 버튼들을 통해 시뮬레이터를 실행할 수 있다.  
+
+
+</details>
+<br/>
+
 ## 
 <details>
 <summary>펼치기 접기</summary>
