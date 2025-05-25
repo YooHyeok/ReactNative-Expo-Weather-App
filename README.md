@@ -341,11 +341,33 @@ style Object를 생성하는데 사용한다.
 style 관련 자동완성 기능을 제공해준다.  
 스타일 컴포넌트를 정리하는데 유용하다.  
 반드시 필요한것은 아니다.  
-React.JS에서 사용하던대로, 컴포넌트의 style속성에 `<Text style={{fontSize: 48}}>Hello<Text>` 형태로도 사용이 가능하다.  
-`{fontSize: 48}` 객체를 변수로 선언하여 바인딩 또한 가능하다.  
+React.JS에서 사용하던 인라인 스타일 방식과 같이 컴포넌트의 style속성에 `<Text style={{fontSize: 48}}>Hello<Text>` 형태 혹은 `const inlineStyle = {fontSize: 48}` `<Text style={inlineStyle}>Hello<Text>`와 같이 스타일 객체를 변수로 선언하여 바인딩 또한 가능하다.  
 
 create 내부에 선언한 Object의 property key는 (ex: container) 특정한 네이밍 패턴을 따를 필요는 없다.  
 마치 class 이름을 부여하는것처럼 제약이 없다. (class명을 부여하는것은 아님.)
+
+#### StatusBar
+
+StatusBar는 Third Party(제 3자) 패키지로 React Native로 부터 import 하지 않는다. 
+시계, 배터리, Wi-fi를 의미한다.  
+IOS 및 Android 운영체제와 소통하기 위한 컴포넌트이다.  
+StatusBar 컴포넌트는 운영체제에 존재하는 상태바와 소통할 수 있는 방법일 뿐이다.  
+
+```js
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={styles.text}>Hello</Text>
+      <Text>Hello! I made a RN App</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+```
+위 컴포넌트 예제코드에서 볼 수 있듯 StatusBar는 View 컴포넌트 내에 들어있지만, 렌더링 되지 않는다.  
+SatusBar의 style을 auto에서 light로 변경하게 되면 앱 상단의 시간 및 wifi등의 상태가 사라지게 된다.  
+이때 View 컴포넌트의 backgroundColor를 red 등으로 변경한다면 다시 StatusBar 영역이 흰색으로 출력되는것을 확인할 수 있다.  
 
 </details>
 <br/>
