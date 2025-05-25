@@ -372,10 +372,54 @@ SatusBar의 style을 auto에서 light로 변경하게 되면 앱 상단의 시�
 </details>
 <br/>
 
-## 
+## React Native Core Components 및 공식 API 변화 
 <details>
 <summary>펼치기 접기</summary>
+<br>
 
+[React Native Docs](https://reactnative.dev/docs/getting-started) 이곳에서는 React Native의 공식 문서를 확인할 수 있다.  
+React Native는 한 번 배우면 어디서든 쓸 수 있다는 점이 큰 장점이다.  
+이 말은, 즉 iOS든 Android든 하나의 코드로 앱을 만들 수 있다는 의미이며, 그런 점에서 React Native는 정말 멋진 기술이다.  
 
+위 사이트에서 특히 주목해야 할 부분은 React Native가 기본적으로 제공하는 컴포넌트들이다.  
+예를 들어 Text, View 같은 컴포넌트들이 그 예다.  
+
+#### Core Components
+문서를 보면 "Core Components"라고 불리는 목록이 있는데, 이것이 바로 React Native에서 공식적으로 제공하는 기본적인 컴포넌트들이다.  
+그리고 이 Core Components는 Android만을 위한 것, 혹은 iOS만을 위한 것들도 따로 제공하고 있다.  
+
+하지만 자세히 보면 이 Core Components 목록은 매우 작다.  
+기본적인 기능만을 제공하는 몇 가지 컴포넌트들만 남아 있는 것을 볼 수 있다.  
+예를 들어 StatusBar 컴포넌트를 보면 알 수 있다.  
+StatusBar는 현재도 React Native가 제공하고 있는데, 문서 상에 두 군데에서 이 컴포넌트를 확인할 수 있다.  
+왜 같은 컴포넌트가 여러 번 나오는 걸까?  
+이건 React Native가 어떻게 발전해 왔는지를 이해하면 알 수 있는 부분이다.  
+
+#### AsyncStorage
+예전에는 지금보다 더 많은 컴포넌트들이 React Native에 기본 포함되어 있었다.  
+그 중 하나가 AsyncStorage다.  
+이건 브라우저의 localStorage처럼 데이터를 로컬에 저장할 수 있는 기능으로, React Native 앱에서도 로컬 스토리지를 쓸 수 있게 해주는 중요한 컴포넌트였다.  
+웹 개발을 해봤다면 localStorage가 익숙할 텐데, React Native에서도 유사한 기능이 있었던 것이다.  
+
+이전에는 AsyncStorage를 포함한 다양한 컴포넌트들을 공식 API로 바로 사용할 수 있었다.  
+하지만 지금은 그렇지 않다.  
+현재 문서를 보면, AsyncStorage는 deprecated(더 이상 권장되지 않음) 상태이며, 사용하려면 별도의 커뮤니티 패키지를 설치해야 한다고 안내되어 있다.  
+예전에는 이런 기능들이 React Native 안에 모두 있었지만, 이제는 공식 지원이 중단된 것이다.  
+
+#### 플랫폼 전용 컴포넌트
+그뿐 아니라 예전에는 다양한 플랫폼 전용 컴포넌트들도 있었다.  
+예를 들어, iOS 전용의 NavigatorIOS, DatePickerIOS, TopBarIOS, SnapshotViewIOS 같은 것들, 그리고 Android 전용의 ToolbarAndroid 같은 컴포넌트들이 포함되어 있었다.  
+하지만 지금은 이런 컴포넌트들을 문서에서 찾아볼 수 없다.  
+전부 사라진 것이다.
+
+navigation(화면 간 이동)도 마찬가지다.   
+실제 모바일 앱을 열어보면 화면 상단에 navigation bar가 있어서 버튼을 누르면 다른 화면으로 이동할 수 있는데, React Native에서는 더 이상 navigation 관련 기능을 자체적으로 제공하지 않는다. 과거에는 있었지만 현재 문서에서는 찾아볼 수 없고, 그 기능 역시 외부 커뮤니티 패키지를 사용해야 한다.
+
+#### React Native 팀이 왜 이런 결정을 내렸을까? 
+처음에는 가능한 한 많은 컴포넌트와 API를 React Native 안에 직접 포함시켜서 개발자들이 쉽게 접근할 수 있도록 하는 것이 목표였다. AsyncStorage, TopBarIOS, ImagePickerIOS 등 다양한 기능들이 공식 문서와 패키지에 포함되어 있었다. 그러나 시간이 지나면서 그 수많은 기능들을 유지보수하고 모든 플랫폼에서 안정적으로 작동하게 만드는 것이 굉장히 어렵다는 사실을 깨닫게 되었다. 모든 기능을 직접 관리하려다 보니 버그도 많고 업데이트도 어려웠던 것이다.
+
+결국 React Native 팀은 판단을 내렸다. 직접 제공하는 컴포넌트와 API의 범위를 대폭 줄이고, 핵심적이고 필수적인 기능들만 남기기로 한 것이다. 그래서 지금의 React Native는 최소한의 Core Components만을 제공하며, 나머지 기능들은 커뮤니티가 만든 외부 라이브러리를 통해 사용하도록 방향을 전환했다. 그렇게 함으로써 React Native 자체의 안정성과 속도를 확보하고자 한 것이다.
+
+예를 들어, 지금은 더 이상 React Native에서 AsyncStorage를 바로 사용할 수 없고, 대신 @react-native-async-storage/async-storage 같은 커뮤니티 패키지를 설치해서 사용해야 한다. navigation도 마찬가지로 react-navigation 같은 외부 라이브러리를 사용해야 한다. React Native 팀은 자신들이 직접 모든 걸 제공하기보다는, 핵심 기능에 집중하고, 커뮤니티가 필요에 따라 선택해서 확장할 수 있도록 하는 방향으로 전환한 것이다.
 </details>
 <br/>
